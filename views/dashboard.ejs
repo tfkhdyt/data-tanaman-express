@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="font.css">
+    <title>Data Tanaman</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row mt-2">
+        <div class="col-12 col-lg-8 text-center">
+          <h1>Data Tanaman</h1>
+        </div>
+      </div>
+      <div class="row mt-2">
+        <div class="col-6 mx-auto">
+          <a class="btn btn-primary" href="/add"><i class="fas fa-plus"></i> Tambah Data</a>
+        </div>
+        <div class="col-6 mx-auto">
+          <a class="btn btn-danger float-end" href="/logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+        </div>
+      </div>
+      <div class="row mt-2">
+        <div class="col-12">
+          <% if (typeof msg != 'undefined') {
+          if(msg.length !== 0) { %>
+          <div class="alert alert-success" role="alert">
+            <i class="fas fa-check"></i> <%= msg %>
+          </div>
+          <% } 
+          }%>
+        </div>
+      </div>
+      <div class="row mt-1">
+        <div class="col-12 col-lg-8">
+          <div class="table-responsive">
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th scope="col">Kode</th>
+                  <th scope="col">Nama</th>
+                  <th scope="col">Keterangan</th>
+                  <th scope="col">Aksi</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% 
+                tanamans.forEach((tanaman) => { %>
+                <tr>  
+                  <th scope="row"><%= tanaman.kode %></th>
+                  <td><%= tanaman.nama %></td>
+                  <td><%= tanaman.keterangan %></td>
+                  <td class="text-center">
+                    <a href="/ubah/<%= tanaman.kode %>" class='btn btn-success badge m-1'><i class="fas fa-edit"></i> Ubah</a>
+                    <a href="/hapus/<%= tanaman.kode %>" class='btn btn-danger badge m-1'><i class="fas fa-trash-alt"></i> Hapus</a>
+                  </td>
+                </tr>
+                <% }) %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  </body>
+</html>
