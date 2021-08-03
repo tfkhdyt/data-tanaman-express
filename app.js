@@ -20,9 +20,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser("secret"));
 app.use(
   session({
-    cookie: {
-      expires: new Date(Date.now() + 60 * 60000),
-    },
+    cookie: {expires: new Date(253402300000000)},
     secret: "secret",
     resave: true,
     saveUninitialized: true,
