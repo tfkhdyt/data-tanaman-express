@@ -50,7 +50,7 @@
                   <th scope="col">Kode</th>
                   <th scope="col">Nama</th>
                   <th scope="col">Keterangan</th>
-                  <th scope="col">Aksi</th>
+                  <th scope="col" class="sorting_disabled">Aksi</th>
                 </tr>
               </thead>
               <tbody>
@@ -78,7 +78,12 @@
     <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
     <script>
       $(document).ready(function() {
-        $('#tabel').DataTable();
+        $('#tabel').DataTable({
+          "aoColumnDefs" : [ {
+            "bSortable" : false,
+            "aTargets" : [ "sorting_disabled" ]
+          } ]
+        });
       } );
     </script>
   </body>
