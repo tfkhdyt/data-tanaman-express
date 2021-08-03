@@ -15,6 +15,9 @@ const {
   updateTanaman,
 } = require("./utils/tanaman");
 
+require("./utils/db");
+const Tanaman = require("./model/tanaman");
+
 // View engine setup
 app.set("view engine", "ejs");
 app.use(express.static("public"));
@@ -49,9 +52,9 @@ app.get("/", function (req, res) {
   });
 });
 
-app.get("/dashboard", (req, res) => {
+app.get("/dashboard", async (req, res) => {
   sess = req.session;
-  const tanamans = loadTanaman();
+  const tanamans = await Tanaman.find();
   if (sess.loggedin || req.query.add || req.query.hapus || req.query.ubah) {
     sess.loggedin = true;
     res.render("dashboard", {
@@ -66,28 +69,27 @@ app.get("/dashboard", (req, res) => {
 
 app.post("/dashboard", (req, res) => {
   sess = req.session;
-  addTanaman(req.body, () => {
-    sess.loggedin = true;
+  Tanaman.insertMany(req.body, (error, result) => {
     req.flash("msg", "Data berhasil ditambah!");
     res.redirect("/dashboard?add=true");
   });
 });
 
-app.get("/hapus/:kode", (req, res) => {
-  const tanaman = findTanaman(req.params.kode);
+app.get("/hapus/:kode", async (req, res) => {
+  const tanaman = await Tanaman.findOne({ kode: req.params.kode });
   if (!tanaman) {
     res.status(404);
     res.send("<h1>404</h4>");
   } else {
-    deleteTanaman(req.params.kode);
-    sess.loggedin = true;
-    req.flash("msg", "Data berhasil dihapus!");
-    res.redirect("/dashboard?hapus=true");
+    Tanaman.deleteOne({ _id: tanaman._id }).then((result) => {
+      req.flash("msg", "Data berhasil dihapus!");
+      res.redirect("/dashboard?hapus=true");
+    });
   }
 });
 
-app.get("/ubah/:kode", (req, res) => {
-  const tanaman = findTanaman(req.params.kode);
+app.get("/ubah/:kode", async (req, res) => {
+  const tanaman = await Tanaman.findOne({ kode: req.params.kode });
   console.log(tanaman);
   res.render("ubah-tanaman", {
     tanaman,
@@ -95,9 +97,19 @@ app.get("/ubah/:kode", (req, res) => {
 });
 
 app.post("/ubah/update", (req, res) => {
-  updateTanaman(req.body);
-  req.flash("msg", "Data berhasil diubah!");
-  res.redirect("/dashboard?ubah=true");
+  Tanaman.updateOne(
+    { _id: req.body._id },
+    {
+      $set: {
+        kode: req.body.kode,
+        nama: req.body.nama,
+        keterangan: req.body.keterangan,
+      },
+    }
+  ).then((result) => {
+    req.flash("msg", "Data berhasil diubah!");
+    res.redirect("/dashboard?ubah=true");
+  });
 });
 
 app.post("/", (req, res) => {
@@ -141,10 +153,10 @@ app.get("/logout", (req, res) => {
   });
 });
 
-app.use('/', (req, res) => {
-  res.status(404)
-  res.send('<h1>404</h1>')
-})
+app.use("/", (req, res) => {
+  res.status(404);
+  res.send("<h1>404</h1>");
+});
 
 app.listen(port, function (err) {
   if (err) console.log(err);

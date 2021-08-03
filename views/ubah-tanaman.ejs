@@ -36,6 +36,7 @@ h1, h2, h3, h4, h5, h6 {
           <form action="/ubah/update" method="post">
             <div class="mb-3">
               <label for="kode" class="form-label">Kode Tanaman</label>
+              <input type="hidden" name="_id" value="<%= tanaman._id %>">
               <input type="hidden" class="form-control" id="oldKode" name='oldKode' value='<%= tanaman.oldKode || tanaman.kode %>'>
               <input type="text" class="form-control" id="kode" name="kode" value="<%= tanaman.kode %>">
             </div>
