@@ -83,7 +83,7 @@ app.get("/ubah/:kode", async (req, res) => {
   const tanaman = await Tanaman.findOne({ kode: req.params.kode });
   console.log(tanaman);
   res.render("ubah-tanaman", {
-    tanaman,
+    tanaman
   });
 });
 
