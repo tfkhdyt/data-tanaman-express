@@ -6,15 +6,6 @@ const flash = require("connect-flash");
 const app = express();
 const port = process.env.PORT || 3000;
 
-const {
-  loadTanaman,
-  findTanaman,
-  cekDuplikat,
-  addTanaman,
-  deleteTanaman,
-  updateTanaman,
-} = require("./utils/tanaman");
-
 require("./utils/db");
 const Tanaman = require("./model/tanaman");
 
