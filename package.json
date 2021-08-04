@@ -15,8 +15,7 @@
     "ejs": "^3.1.6",
     "express": "^4.17.1",
     "express-session": "^1.17.2",
-    "mongoose": "^5.12.13",
-    "sweetalert2": "^11.1.2"
+    "mongoose": "^5.12.13"
   },
   "engines": {
     "node": "14.x"
