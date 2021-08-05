@@ -8,6 +8,9 @@ Username : `taufik`
 
 Password : `hidayat`
 
+### Peringatan
+Jangan hapus/ubah data yang sudah ada. Jika mau tes, tambah data baru terlebih dahulu
+
 ## Support
 Klik tombol di bawah untuk mendukung saya lewat donasi
 
