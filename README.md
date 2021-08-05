@@ -4,6 +4,10 @@ CRUD data tanaman menggunakan Express.js, MongoDB, dan Node.js
 ## Demo
 https://data-tanaman-taufik-hidayat.herokuapp.com
 
+Username : `taufik`
+
+Password : `hidayat`
+
 ## Support
 Klik tombol di bawah untuk mendukung saya lewat donasi
 
