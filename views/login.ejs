@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--===============================================================================================-->	
-    <link rel="icon" type="image/png" href="login/images/icons/favicon.ico"/>
+    <link rel="icon" type="image/png" href="https://i.postimg.cc/5tBz2KNs/plant.png"/>
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="login/vendor/bootstrap/css/bootstrap.min.css">
     <!--===============================================================================================-->
@@ -28,14 +28,13 @@
       <div class="container-login100">
         <div class="wrap-login100">
           <div class="login100-pic js-tilt" data-tilt>
-            <img src="login/images/img-01.png" alt="IMG">
+            <img src="https://i.postimg.cc/VspX4CTB/botanic.png" alt="IMG">
           </div>
-
+        
           <form class="login100-form validate-form" method='post' action="/" autocomplete="off">
             <span class="login100-form-title">
               Data Tanaman
             </span>
-
 
             <% if (typeof msg != 'undefined') {
             if(msg.length !== 0) { %>
@@ -49,6 +48,14 @@
             if(belumLogin.length !== 0) { %>
             <div class="alert alert-danger" role="alert">
               <%= belumLogin %>
+            </div>
+            <% } 
+            }%>
+            
+            <% if (typeof logout != 'undefined') {
+            if(logout.length !== 0) { %>
+            <div class="alert alert-success" role="alert">
+              <%= logout %>
             </div>
             <% } 
             }%>
