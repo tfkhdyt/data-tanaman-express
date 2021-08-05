@@ -2,7 +2,7 @@
 CRUD data tanaman menggunakan Express.js, MongoDB, dan Node.js
 
 ## Demo
-https://data-tanaman-taufik-hidayat.herokuapp.com
+https://project.tfkhdyt.my.id/data-tanaman
 
 Username : `taufik`
 
