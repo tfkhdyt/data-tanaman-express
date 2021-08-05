@@ -7,12 +7,3 @@ mongoose.connect(uri, {
 })
 .then(() => console.log('MongoDB connected...'))
 .catch(err => console.log(err));
-
-
-//const tanaman1 = new Tanaman({
-  //kode: "BUNGA-001",
-  //nama: "Bunga Mawar",
-  //keterangan: "Bunga yang berwarna merah"
-//})
-
-//tanaman1.save().then(tanaman => console.log(tanaman))
