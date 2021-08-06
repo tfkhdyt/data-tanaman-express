@@ -32,7 +32,7 @@
         <h1>Ubah Tanaman</h1>
       </div>
     </div>
-    <div class="row mt-2">
+    <div class="row mt-2 p-1">
       <div class="col-12 col-lg-8">
         <form action="/ubah/update" method="post">
           <div class="mb-3">
@@ -49,7 +49,7 @@
             <label for="keterangan" class="form-label">Keterangan Tanaman</label>
             <input type="text" class="form-control" id="keterangan" name="keterangan" value="<%= tanaman.keterangan %>">
           </div>
-          <a href="/dashboard" class="btn btn-success"><i class="fas fa-long-arrow-alt-left"></i> Kembali</a>
+          <a href="/dashboard" class="btn btn-outline-primary"><i class="fas fa-long-arrow-alt-left"></i> Kembali</a>
           <button type="submit" class="btn btn-primary float-end"><i class="fas fa-save"></i> Simpan</button>
         </form>
       </div>
