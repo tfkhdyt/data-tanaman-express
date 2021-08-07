@@ -24,11 +24,7 @@
           <h1>Data Tanaman</h1>
         </div>
       </div>
-      <div class="row">
-        <div class="col-12 col-lg-8">
-          <marquee behavior="smooth" scrollamount="5">Taufik Hidayat | 301200032 | Teknik Informatika</marquee>
-        </div>
-      </div>
+
       <div class="row mt-2">
         <div class="col-6 mx-auto">
           <a class="btn btn-primary" href="/add"><i class="fas fa-plus"></i> Tambah Data</a>
@@ -48,10 +44,10 @@
           }%>
         </div>
       </div>
-      <div class="row mt-1 mb-4">
+      <div class="row mt-1">
         <div class="col-12 col-lg-8">
           <div class="table-responsive">
-            <table class="table table-striped" id="tabel" style="width:100%;">
+            <table class="table table-striped" id="tabel">
               <thead>
                 <tr>
                   <th scope="col">Kode</th>
@@ -78,6 +74,7 @@
           </div>
         </div>
       </div>
+      <%- include('footer') %>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
