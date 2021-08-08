@@ -28,26 +28,26 @@
 <body>
   <div class="container">
     <div class="row mt-2">
-      <div class="col-12 col-lg-8 text-center">
+      <div class="col-12 col-md-6 text-center mx-auto">
         <h1>Ubah Tanaman</h1>
       </div>
     </div>
     <div class="row mt-2 p-1">
-      <div class="col-12 col-lg-8">
-        <form action="/ubah/update" method="post">
-          <div class="mb-3">
-            <label for="kode" class="form-label">Kode Tanaman</label>
-            <input type="hidden" name="_id" value="<%= tanaman._id %>">
-            <input type="hidden" class="form-control" id="oldKode" name='oldKode' value='<%= tanaman.kode %>'>
-            <input type="text" class="form-control" id="kode" name="kode" value="<%= tanaman.kode %>">
+      <div class="col-12 col-md-6 mx-auto">
+        <form action="/ubah/update" method="post" autocomplete="off">
+          <input type="hidden" name="_id" value="<%= tanaman._id %>">
+          <input type="hidden" class="form-control" id="oldKode" name='oldKode' value='<%= tanaman.kode %>'>
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="kode" name="kode" placeholder="Kode Tanaman" value="<%= tanaman.kode %>">
+            <label for="kode">Kode Tanaman</label>
           </div>
-          <div class="mb-3">
-            <label for="nama" class="form-label">Nama Tanaman</label>
-            <input type="text" class="form-control" id="nama" name="nama" value="<%= tanaman.nama %>">
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="nama" name="nama" placeholder="Nama Tanaman" value="<%= tanaman.nama %>">
+            <label for="nama">Nama Tanaman</label>
           </div>
-          <div class="mb-3">
+          <div class="form-floating mb-3">
+            <textarea class="form-control" id="keterangan" name="keterangan" placeholder="Keterangan" style="height:100px;"><%= tanaman.keterangan %></textarea>
             <label for="keterangan" class="form-label">Keterangan Tanaman</label>
-            <input type="text" class="form-control" id="keterangan" name="keterangan" value="<%= tanaman.keterangan %>">
           </div>
           <a href="/dashboard" class="btn btn-outline-primary"><i class="fas fa-long-arrow-alt-left"></i> Kembali</a>
           <button type="submit" class="btn btn-primary float-end"><i class="fas fa-save"></i> Simpan</button>
