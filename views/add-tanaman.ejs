@@ -13,15 +13,11 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="font.css">
   <link rel="icon" href="img/favicon.ico">
-  <title>Tambah Tanaman</title>
+  <title><%= title %> | Data Tanaman</title>
 </head>
 <body>
   <div class="container">
-    <div class="row mt-2">
-      <div class="col-12 col-md-6 text-center mx-auto">
-        <h1>Tambah Tanaman</h1>
-      </div>
-    </div>
+    <%- include('header') %>
     <div class="row mt-2 p-1">
       <div class="col-12 col-md-6 mx-auto">
         <form action="/dashboard" method="post" autocomplete="off">

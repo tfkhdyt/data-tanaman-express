@@ -15,16 +15,11 @@
     <!-- <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css"> -->
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/dataTables.bootstrap5.min.css"></link>
     <link rel="icon" href="img/favicon.ico">
-    <title>Data Tanaman</title>
+    <title>Dashboard | <%= title %></title>
   </head>
   <body>
     <div class="container">
-      <div class="row mt-2">
-        <div class="col-12 col-lg-8 text-center">
-          <h1>Data Tanaman</h1>
-        </div>
-      </div>
-
+      <%- include('header') %>
       <div class="row mt-2">
         <div class="col-6 mx-auto">
           <a class="btn btn-primary" href="/add"><i class="fas fa-plus"></i> Tambah Data</a>

@@ -44,7 +44,7 @@ app.get("/", function (req, res) {
   if (req.query.logout) {
     return res.render("login", {
       belumLogin: req.flash("msg"),
-      logout: req.flash("logout"),
+      logout: req.flash("logout")
     });
   }
   res.render("login", {
@@ -60,6 +60,7 @@ app.get("/dashboard", async (req, res) => {
     res.render("dashboard", {
       tanamans,
       msg: req.flash("msg"),
+      title: "Data Tanaman"
     });
   } else {
     req.flash("msg", "Anda harus login terlebih dahulu!");
@@ -98,7 +99,8 @@ app.get("/ubah/:kode", async (req, res) => {
   });
   console.log(tanaman);
   res.render("ubah-tanaman", {
-    tanaman
+    tanaman,
+    title: "Ubah Data"
   });
 });
 
@@ -149,7 +151,9 @@ app.post("/", (req, res) => {
 app.get("/add", (req, res) => {
   sess = req.session;
   sess.loggedin = true;
-  res.render("add-tanaman");
+  res.render("add-tanaman", {
+    title: "Tambah Data"
+  });
 });
 
 app.get("/logout", (req, res) => {
