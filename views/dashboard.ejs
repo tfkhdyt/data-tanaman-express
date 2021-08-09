@@ -18,17 +18,16 @@
     <title>Dashboard | <%= title %></title>
   </head>
   <body>
-    <div class="mx-auto">
     <div class="container">
-      <%- include('header') %>
-      <div class="row mt-2">
-        <div class="col-6 col-lg-4">
+      <div class="row mx-auto">
+        <%- include('header') %>
+        <div class="col-6 mx-auto">
           <a class="btn btn-primary" href="/add"><i class="fas fa-plus"></i> Tambah Data</a>
         </div>
-        <div class="col-6 col-lg-4">
+        <div class="col-6 mx-auto">
           <button class="btn btn-danger float-end" id="btnLogout"><i class="fas fa-sign-out-alt"></i> Logout</button>
         </div>
-        <div class="col-12 col-lg-8 mt-3">
+        <div class="col-12 col-lg-10 mt-3 mx-auto">
           <div class="table-responsive">
             <table class="table table-striped" id="tabel">
               <thead>
@@ -56,9 +55,8 @@
             </table>
           </div>
         </div>
+        <%- include('footer') %>
       </div>
-      <%- include('footer') %>
-    </div>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
