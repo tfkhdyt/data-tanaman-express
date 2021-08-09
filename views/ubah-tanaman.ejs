@@ -34,15 +34,15 @@
           <input type="hidden" name="_id" value="<%= tanaman._id %>">
           <input type="hidden" class="form-control" id="oldKode" name='oldKode' value='<%= tanaman.kode %>'>
           <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="kode" name="kode" placeholder="Kode Tanaman" value="<%= tanaman.kode %>">
+            <input type="text" class="form-control" id="kode" name="kode" placeholder="Kode Tanaman" value="<%= tanaman.kode %>" required>
             <label for="kode">Kode Tanaman</label>
           </div>
           <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="nama" name="nama" placeholder="Nama Tanaman" value="<%= tanaman.nama %>">
+            <input type="text" class="form-control" id="nama" name="nama" placeholder="Nama Tanaman" value="<%= tanaman.nama %>" required>
             <label for="nama">Nama Tanaman</label>
           </div>
           <div class="form-floating mb-3">
-            <textarea class="form-control" id="keterangan" name="keterangan" placeholder="Keterangan" style="height:100px;"><%= tanaman.keterangan %></textarea>
+            <textarea class="form-control" id="keterangan" name="keterangan" placeholder="Keterangan" style="height:100px;" required><%= tanaman.keterangan %></textarea>
             <label for="keterangan" class="form-label">Keterangan Tanaman</label>
           </div>
           <a href="/dashboard" class="btn btn-outline-primary"><i class="fas fa-long-arrow-alt-left"></i> Kembali</a>

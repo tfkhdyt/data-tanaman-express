@@ -22,15 +22,15 @@
       <div class="col-12 col-md-6 mx-auto">
         <form action="/dashboard" method="post" autocomplete="off">
           <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="kode" name="kode" placeholder="Kode Tanaman">
+            <input type="text" class="form-control" id="kode" name="kode" placeholder="Kode Tanaman" required>
             <label for="kode">Kode Tanaman</label>
           </div>
           <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="nama" name="nama" placeholder="Nama Tanaman">
+            <input type="text" class="form-control" id="nama" name="nama" placeholder="Nama Tanaman" required>
             <label for="nama">Nama Tanaman</label>
           </div>
           <div class="form-floating mb-3">
-            <textarea style="height:100px;" class="form-control" id="keterangan" name="keterangan" placeholder="Keterangan"></textarea>
+            <textarea style="height:100px;" class="form-control" id="keterangan" name="keterangan" placeholder="Keterangan" required></textarea>
             <label for="keterangan">Keterangan Tanaman</label>
           </div>
           <a href="/dashboard" class="btn btn-outline-primary"><i class="fas fa-long-arrow-alt-left"></i> Kembali</a>

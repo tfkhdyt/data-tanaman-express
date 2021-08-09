@@ -28,17 +28,6 @@
           <a class="btn btn-danger float-end" href="/logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
         </div>
       </div>
-      <div class="row mt-2">
-        <div class="col-12">
-          <% if (typeof msg != 'undefined') {
-          if(msg.length !== 0) { %>
-          <div class="alert alert-success" role="alert">
-            <i class="fas fa-check"></i> <%= msg %>
-          </div>
-          <% } 
-          }%>
-        </div>
-      </div>
       <div class="row mt-1">
         <div class="col-12 col-lg-8">
           <div class="table-responsive">
@@ -101,28 +90,32 @@
       } );
     </script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.2/dist/sweetalert2.all.min.js"></script>
+      <% if (typeof msg != 'undefined') {
+        if(msg.length !== 0) { %>
+          <script>
+            Swal.fire(
+              'Berhasil',
+              '<%= msg %>',
+              'success'
+            )
+          </script>
+        <% } 
+      }%>
     <script>
       $('.confirmation').on('click', function () {
         const kode = $(this).attr('kode')
         console.log(kode)
         Swal.fire({
-          title: 'Apakah Anda yakin?',
+          title: `Apakah Anda yakin ingin menghapus ${kode}?`,
           text: "Data yang sudah dihapus tidak dapat dikembalikan lagi!",
           icon: 'warning',
           showCancelButton: true,
-          confirmButtonColor: '#3085d6',
           cancelButtonColor: '#d33',
           confirmButtonText: 'Ya, hapus data',
           cancelButtonText: 'Batal'
         }).then((result) => {
           if (result.isConfirmed) {
-            Swal.fire(
-              'Terhapus!',
-              'Data berhasil dihapus!',
-              'success'
-            ).then(value => {
-              window.location.href = `/hapus/${kode}`
-            })
+            window.location.href = `/hapus/${kode}`
           }
         })
       });
