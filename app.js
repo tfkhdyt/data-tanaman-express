@@ -35,6 +35,15 @@ app.use(flash());
 
 let sess;
 
+function checkUserSession(req, res, next) {
+  if (req.session.loggedin) {
+    next();
+  } else {
+    req.flash("msg", "Anda harus login terlebih dahulu!");
+    res.redirect('/');
+  }
+}
+
 app.get("/", function (req, res) {
   sess = req.session;
   if (sess.loggedin) {
@@ -52,20 +61,50 @@ app.get("/", function (req, res) {
   });
 });
 
-app.get("/dashboard", async (req, res) => {
+app.post("/", (req, res) => {
   sess = req.session;
-  const tanamans = await Tanaman.find();
-  if (sess.loggedin || req.query.add || req.query.hapus || req.query.ubah) {
-    sess.loggedin = true;
-    res.render("dashboard", {
-      tanamans,
+  const username = req.body.username;
+  const password = req.body.password;
+
+  if (username !== 'taufik' && password !== 'hidayat') {
+    req.flash("msg", "Username & Password salah!");
+    res.render("login", {
       msg: req.flash("msg"),
-      title: "Data Tanaman"
     });
   } else {
-    req.flash("msg", "Anda harus login terlebih dahulu!");
-    res.redirect("/");
+    if (username === "taufik") {
+      if (password === "hidayat") {
+        sess.username = username;
+        sess.password = password;
+        sess.loggedin = true;
+        req.flash("msg", "Anda telah login!");
+        res.redirect("/dashboard");
+      } else {
+        req.flash("msg", "Password salah!");
+        res.render("login", {
+          msg: req.flash("msg"),
+        });
+      }
+    } else {
+      console.log("Username salah");
+      req.flash("msg", "Username salah!");
+      res.render("login", {
+        msg: req.flash("msg"),
+      });
+    }
   }
+});
+
+app.get("/dashboard", checkUserSession, async (req, res) => {
+  sess = req.session;
+  const tanamans = await Tanaman.find();
+  sess.loggedin = true;
+  res.render("dashboard", {
+    tanamans,
+    msg: req.flash("msg"),
+    title: "Data Tanaman",
+    loggedin: sess.loggedin
+  });
 });
 
 app.post("/dashboard", (req, res) => {
@@ -120,40 +159,6 @@ app.post("/ubah/update", (req, res) => {
       req.flash("msg", "Data berhasil diubah!");
       res.redirect("/dashboard?ubah=true");
     });
-});
-
-app.post("/", (req, res) => {
-  sess = req.session;
-  const username = req.body.username;
-  const password = req.body.password;
-  
-  if (username !== 'taufik' && password !== 'hidayat') {
-    req.flash("msg", "Username & Password salah!");
-    res.render("login", {
-      msg: req.flash("msg"),
-    });
-  } else {
-    if (username === "taufik") {
-      if (password === "hidayat") {
-        sess.username = username;
-        sess.password = password;
-        sess.loggedin = true;
-        req.flash("msg", "Anda telah login!");
-        res.redirect("/dashboard");
-      } else {
-        req.flash("msg", "Password salah!");
-        res.render("login", {
-          msg: req.flash("msg"),
-        });
-      }
-    } else {
-      console.log("Username salah");
-      req.flash("msg", "Username salah!");
-      res.render("login", {
-        msg: req.flash("msg"),
-      });
-    }
-  }
 });
 
 app.get("/add", (req, res) => {
