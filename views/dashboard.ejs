@@ -60,7 +60,7 @@
                   <td><%= tanaman.keterangan %></td>
                   <td class="text-center">
                     <a href="/ubah/<%= tanaman.kode %>" class='btn btn-success badge m-1'><i class="fas fa-edit"></i> Ubah</a>
-                    <a href="/hapus/<%= tanaman.kode %>" class='btn btn-danger badge m-1'><i class="fas fa-trash-alt"></i> Hapus</a>
+                    <a href="/hapus/<%= tanaman.kode %>" class='btn btn-danger badge m-1 confirmation'><i class="fas fa-trash-alt"></i> Hapus</a>
                   </td>
                 </tr>
                 <% }) %>
@@ -99,6 +99,11 @@
           "lengthMenu": [5, 10, 25, 50, 100]
         });
       } );
+    </script>
+    <script>
+      $('.confirmation').on('click', function () {
+        return confirm('Apakah Anda yakin ingin menghapus data?');
+      });
     </script>
   </body>
 </html>
