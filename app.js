@@ -180,7 +180,7 @@ app.get("/logout", (req, res) => {
 
 app.use("/", (req, res) => {
   res.status(404);
-  res.send("<h1>404</h1>");
+  res.render('404');
 });
 
 app.listen(port, function (err) {
