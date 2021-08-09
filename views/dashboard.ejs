@@ -60,7 +60,7 @@
                   <td><%= tanaman.keterangan %></td>
                   <td class="text-center">
                     <a href="/ubah/<%= tanaman.kode %>" class='btn btn-success badge m-1'><i class="fas fa-edit"></i> Ubah</a>
-                    <a href="/hapus/<%= tanaman.kode %>" class='btn btn-danger badge m-1 confirmation'><i class="fas fa-trash-alt"></i> Hapus</a>
+                    <button class='btn btn-danger badge m-1 confirmation' kode="<%= tanaman.kode %>"><i class="fas fa-trash-alt"></i> Hapus</button>
                   </td>
                 </tr>
                 <% }) %>
@@ -100,9 +100,30 @@
         });
       } );
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.2/dist/sweetalert2.all.min.js"></script>
     <script>
       $('.confirmation').on('click', function () {
-        return confirm('Apakah Anda yakin ingin menghapus data?');
+        const kode = $('.confirmation').attr('kode')
+        Swal.fire({
+          title: 'Apakah Anda yakin?',
+          text: "Data yang sudah dihapus tidak dapat dikembalikan lagi!",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Ya, hapus data',
+          cancelButtonText: 'Batal'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            Swal.fire(
+              'Terhapus!',
+              'Data berhasil dihapus!',
+              'success'
+            ).then(value => {
+              window.location.href = `/hapus/${kode}`
+            })
+          }
+        })
       });
     </script>
   </body>
