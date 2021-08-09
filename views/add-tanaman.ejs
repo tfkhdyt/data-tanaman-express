@@ -16,7 +16,8 @@
   <title><%= title %> | Data Tanaman</title>
 </head>
 <body>
-  <div class="container text-center">
+  <div class="mx-auto">
+    <div class="container">
     <%- include('header') %>
     <div class="row mt-2 p-1">
       <div class="col-12 col-md-6 mx-auto">
@@ -33,12 +34,13 @@
             <textarea style="height:100px;" class="form-control" id="keterangan" name="keterangan" placeholder="Keterangan" required></textarea>
             <label for="keterangan">Keterangan Tanaman</label>
           </div>
-          <a href="/dashboard" class="btn btn-outline-primary"><i class="fas fa-long-arrow-alt-left"></i> Kembali</a>
+          <a href="/dashboard" class="btn btn-outline-primary float-start"><i class="fas fa-long-arrow-alt-left"></i> Kembali</a>
           <button type="submit" class="btn btn-primary float-end"><i class="fas fa-save"></i> Simpan</button>
         </form>
       </div>
     </div>
     <%- include('footer') %>
+  </div>
   </div>
 
 
