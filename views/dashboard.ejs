@@ -25,7 +25,7 @@
           <a class="btn btn-primary" href="/add"><i class="fas fa-plus"></i> Tambah Data</a>
         </div>
         <div class="col-6 mx-auto">
-          <a class="btn btn-danger float-end" href="/logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+          <button class="btn btn-danger float-end" id="btnLogout"><i class="fas fa-sign-out-alt"></i> Logout</button>
         </div>
       </div>
       <div class="row mt-3">
@@ -116,6 +116,20 @@
         }).then((result) => {
           if (result.isConfirmed) {
             window.location.href = `/hapus/${kode}`
+          }
+        })
+      });
+      
+      $('#btnLogout').on('click', function () {
+        Swal.fire({
+          title: `Apakah Anda yakin ingin logout?`,
+          icon: 'question',
+          showCancelButton: true,
+          confirmButtonText: 'Ya, logout',
+          cancelButtonText: 'Batal'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            window.location.href = `/logout`
           }
         })
       });

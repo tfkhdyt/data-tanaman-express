@@ -45,31 +45,7 @@
               Data Tanaman
             </span>
 
-            <% if (typeof msg != 'undefined') {
-            if(msg.length !== 0) { %>
-            <div class="alert alert-danger" role="alert">
-              <%= msg %>
-            </div>
-            <% } 
-            }%>
-
-            <% if (typeof belumLogin != 'undefined') {
-            if(belumLogin.length !== 0) { %>
-            <div class="alert alert-danger" role="alert">
-              <%= belumLogin %>
-            </div>
-            <% } 
-            }%>
-
-            <% if (typeof logout != 'undefined') {
-            if(logout.length !== 0) { %>
-            <div class="alert alert-success" role="alert">
-              <%= logout %>
-            </div>
-            <% } 
-            }%>
-
-            <div class="wrap-input100 validate-input">
+            <div class="wrap-input100 validate-input" data-validate = "Username harus diisi">
               <input class="input100" type="text" name="username" placeholder="Username">
               <span class="focus-input100"></span>
               <span class="symbol-input100">
@@ -77,7 +53,7 @@
               </span>
             </div>
 
-            <div class="wrap-input100 validate-input" data-validate = "Password is required">
+            <div class="wrap-input100 validate-input" data-validate = "Password harus diisi">
               <input class="input100" type="password" name="password" placeholder="Password">
               <span class="focus-input100"></span>
               <span class="symbol-input100">
@@ -119,6 +95,41 @@
     </script>
     <!--===============================================================================================-->
     <script src="login/js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.2/dist/sweetalert2.all.min.js"></script>
+      <% if (typeof msg != 'undefined') {
+        if(msg.length !== 0) { %>
+          <script>
+            Swal.fire(
+              'Waduh...',
+              '<%= msg %>',
+              'error'
+            )
+          </script>
+        <% } 
+      }%>
+      
+      <% if (typeof belumLogin != 'undefined') {
+        if(belumLogin.length !== 0) { %>
+          <script>
+            Swal.fire(
+              'Waduh...',
+              '<%= belumLogin %>',
+              'error'
+            )
+          </script>
+        <% } 
+      }%>
 
+      <% if (typeof logout != 'undefined') {
+        if(logout.length !== 0) { %>
+          <script>
+            Swal.fire(
+              'Berhasil',
+              '<%= logout %>',
+              'success'
+            )
+          </script>
+        <% } 
+      }%>
   </body>
 </html>

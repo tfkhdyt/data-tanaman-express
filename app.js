@@ -126,25 +126,33 @@ app.post("/", (req, res) => {
   sess = req.session;
   const username = req.body.username;
   const password = req.body.password;
-
-  if (username === "taufik") {
-    if (password === "hidayat") {
-      sess.username = username;
-      sess.password = password;
-      sess.loggedin = true;
-      res.redirect("/dashboard");
+  
+  if (username !== 'taufik' && password !== 'hidayat') {
+    req.flash("msg", "Username & Password salah!");
+    res.render("login", {
+      msg: req.flash("msg"),
+    });
+  } else {
+    if (username === "taufik") {
+      if (password === "hidayat") {
+        sess.username = username;
+        sess.password = password;
+        sess.loggedin = true;
+        req.flash("msg", "Anda telah login!");
+        res.redirect("/dashboard");
+      } else {
+        req.flash("msg", "Password salah!");
+        res.render("login", {
+          msg: req.flash("msg"),
+        });
+      }
     } else {
-      req.flash("msg", "Password salah!");
+      console.log("Username salah");
+      req.flash("msg", "Username salah!");
       res.render("login", {
         msg: req.flash("msg"),
       });
     }
-  } else {
-    console.log("Username salah");
-    req.flash("msg", "Username salah!");
-    res.render("login", {
-      msg: req.flash("msg"),
-    });
   }
 });
 
