@@ -132,7 +132,7 @@ app.get("/hapus/:kode", async (req, res) => {
   }
 });
 
-app.get("/ubah/:kode", async (req, res) => {
+app.get("/ubah/:kode", checkUserSession, async (req, res) => {
   const tanaman = await Tanaman.findOne({
     kode: req.params.kode
   });
@@ -161,7 +161,7 @@ app.post("/ubah/update", (req, res) => {
     });
 });
 
-app.get("/add", (req, res) => {
+app.get("/add", checkUserSession, (req, res) => {
   sess = req.session;
   sess.loggedin = true;
   res.render("add-tanaman", {
