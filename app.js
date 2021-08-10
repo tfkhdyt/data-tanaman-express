@@ -49,15 +49,13 @@ app.get("/", function (req, res) {
   if (sess.loggedin) {
     return res.redirect("/dashboard");
   }
-  req.flash("logout", "Anda telah logout!");
   if (req.query.logout) {
-    return res.render("login", {
-      belumLogin: req.flash("msg"),
-      logout: req.flash("logout")
-    });
+    req.flash("logout", "Anda telah logout!")
+    return res.redirect('/')
   }
   res.render("login", {
     belumLogin: req.flash("msg"),
+    logout: req.flash('logout')
   });
 });
 
@@ -111,7 +109,8 @@ app.post("/dashboard", (req, res) => {
   sess = req.session;
   Tanaman.insertMany(req.body, (error, result) => {
     req.flash("msg", "Data berhasil ditambah!");
-    res.redirect("/dashboard?add=true");
+    sess.loggedin = true
+    res.redirect("/dashboard");
   });
 });
 
@@ -127,7 +126,8 @@ app.get("/hapus/:kode", async (req, res) => {
       _id: tanaman._id
     }).then((result) => {
       req.flash("msg", "Data berhasil dihapus!");
-      res.redirect("/dashboard?hapus=true");
+      sess.loggedin = true
+      res.redirect("/dashboard");
     });
   }
 });
@@ -157,7 +157,8 @@ app.post("/ubah/update", (req, res) => {
     }
   ).then((result) => {
       req.flash("msg", "Data berhasil diubah!");
-      res.redirect("/dashboard?ubah=true");
+      sess.loggedin = true
+      res.redirect("/dashboard");
     });
 });
 
