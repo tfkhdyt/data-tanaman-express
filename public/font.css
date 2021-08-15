@@ -1,9 +1,9 @@
-* {
-  font-size: .9rem;
-}
+/** {*/
+/*  font-size: .9rem;*/
+/*}*/
 body {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'PF Encore Sans Pro';
 }
-h1, h2, h3, h4, h5, h6 {
-  font-weight: bold;
+h1, h2, h3, h4, h5, h6{
+  font-family: 'PF Encore Sans Pro Bold';
 }

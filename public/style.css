@@ -1,0 +1,19 @@
+@font-face {
+  font-family: 'PF Encore Sans Pro';
+  src: local('PF Encore Sans Pro Regular'), local('PF-Encore-Sans-Pro-Regular'),
+  url('font/PFEncoreSansPro-Regular.woff2') format('woff2'),
+  url('font/PFEncoreSansPro-Regular.woff') format('woff'),
+  url('font/PFEncoreSansPro-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'PF Encore Sans Pro Bold';
+  src: local('PF Encore Sans Pro Bold'), local('PF-Encore-Sans-Pro-Bold'),
+  url('font/PFEncoreSansPro-Bold.woff2') format('woff2'),
+  url('font/PFEncoreSansPro-Bold.woff') format('woff'),
+  url('font/PFEncoreSansPro-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
